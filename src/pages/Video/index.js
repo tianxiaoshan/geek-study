@@ -31,7 +31,7 @@ const Video = () => {
   const [index, setindex] = useState(0)
   const dispatch = useDispatch()
   // const [visible, setVisible] = useState(false)
-  const list = useSelector((state) => state.prizeslist.list.data)
+  const list = useSelector((state) => state.prizeslist.list)
   // console.log(list)
   const onSlideChange = (item) => {
     setindex(item.realIndex)
@@ -52,7 +52,12 @@ const Video = () => {
       if (!syncObj[item.payerType]) {
         await dispatch(
           getSyncData({
-            payerType: item.payerType,
+            bindStatus: null,
+            cpType: item.payerType,
+            cpUserId: null,
+            cpUserIdType: null,
+            muserld: null,
+            projectid: null,
           })
         )
       }
@@ -77,8 +82,8 @@ const Video = () => {
     <>
       <div className={styles.root}>
         <div className="btn">
-          {' '}
-          立即领取{list[index].prizeAmount}元{text[list[index].prizeType]}
+          立即领取{list[index] && list[index].prizeAmount}元
+          {list[index] && text[list[index].prizeType]}
         </div>
         <Swiper
           className="swiper"

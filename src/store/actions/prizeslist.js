@@ -13,7 +13,7 @@ export const prizesList = (params) => {
   return async (dispathch) => {
     const res = await https({
       url: '/prizes',
-      mothod: 'get',
+      method: 'get',
       params,
     })
     dispathch(saveDrizesList(res.data))

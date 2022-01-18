@@ -5,7 +5,7 @@ export const getSyncData = (data) => {
   return async (dispatch) => {
     const res = await https({
       url: '/third-party/sync',
-      mothed: 'post',
+      method: 'post',
       data,
     })
     console.log(res.data)

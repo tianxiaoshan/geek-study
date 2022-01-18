@@ -45,32 +45,33 @@ const tabBar = [
     path: '/home/profile',
   },
 ]
-export default function Layout() {
+export default function Layout(Info) {
   const navigate = useNavigate()
   const location = useLocation()
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getUser())
     dispatch(activityInfo({ activityCode: 'ptRescue' }))
-
-    dispatch(prizesList())
   }, [dispatch])
-  // const Info = useSelector((state) => state.active.info.data)
+  const Info = useSelector((state) => state.active.info)
   // console.log('activeinfo', Info)
 
-  // const { nickName, phone, userName, userId, realName } = window._userInfo || {}
-  // useEffect(() => {
-  //   dispatch(
-  //     activityUserInfo({
-  //       nickName,
-  //       phone,
-  //       userName,
-  //       realName,
-  //       thirdUserCode: userId,
-  //       id: Info.projectId,
-  //     })
-  //   )
-  // }, [Info])
+  const { nickName, phone, userName, userId, realName } = window._userInfo || {}
+  useEffect(() => {
+    dispatch(
+      activityUserInfo({
+        nickName,
+        phone,
+        userName,
+        realName,
+        thirdUserCode: userId,
+        id: Info.projectId,
+      })
+    )
+    dispatch(
+      prizesList({ projectId: Info.projectId, activityId: Info.activityId })
+    )
+  }, [Info])
   return (
     <div className={styles.root}>
       {/* 区域一：点击按钮切换显示内容的区域 */}

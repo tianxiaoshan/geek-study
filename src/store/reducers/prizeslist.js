@@ -1,6 +1,6 @@
 // 处理保存奖品列表信息的 reducer
 const List = {
-  list: {},
+  list: [],
 }
 
 export default function reducer(state = List, action) {
