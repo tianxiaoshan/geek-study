@@ -14,7 +14,6 @@ export default function App() {
     <BrowserRouter>
       <React.Suspense fallback={<div>loading.....</div>}>
         <Routes>
-          11111111
           {/* <Redirect exact from="/" to="/home"></Redirect> */}
           <Route path="/login" element={<Login />}></Route>
           <Route path="/home/*" element={<Home />}></Route>

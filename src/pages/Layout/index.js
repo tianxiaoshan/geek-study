@@ -15,6 +15,8 @@ import classNames from 'classnames'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUser } from '@/store/actions/profile'
 import { activityInfo } from '@/store/actions/active'
+import { activityUserInfo } from '@/store/actions/activeuser'
+import { prizesList } from '@/store/actions/prizeslist'
 
 const Qa = React.lazy(() => import('@/pages/QA'))
 const Home = React.lazy(() => import('@/pages/Home'))
@@ -49,9 +51,26 @@ export default function Layout() {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getUser())
-    dispatch(activityInfo())
+    dispatch(activityInfo({ activityCode: 'ptRescue' }))
+
+    dispatch(prizesList())
   }, [dispatch])
-  // console.log(user)
+  // const Info = useSelector((state) => state.active.info.data)
+  // console.log('activeinfo', Info)
+
+  // const { nickName, phone, userName, userId, realName } = window._userInfo || {}
+  // useEffect(() => {
+  //   dispatch(
+  //     activityUserInfo({
+  //       nickName,
+  //       phone,
+  //       userName,
+  //       realName,
+  //       thirdUserCode: userId,
+  //       id: Info.projectId,
+  //     })
+  //   )
+  // }, [Info])
   return (
     <div className={styles.root}>
       {/* 区域一：点击按钮切换显示内容的区域 */}
