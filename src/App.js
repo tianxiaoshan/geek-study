@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 const Login = React.lazy(() => import('@/pages/Login'))
 // import Login from '@/pages/Login'
 const Home = React.lazy(() => import('@/pages/Layout'))
+const ProfileEdit = React.lazy(() => import('@/pages/Profile/Edit'))
 // import Layout from '@/pages/Layout'
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
           {/* <Redirect exact from="/" to="/home"></Redirect> */}
           <Route path="/login" element={<Login />}></Route>
           <Route path="/home/*" element={<Home />}></Route>
+          <Route path="/profile/edit" element={<ProfileEdit />}></Route>
         </Routes>
       </React.Suspense>
 

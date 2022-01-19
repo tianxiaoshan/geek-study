@@ -45,7 +45,7 @@ const tabBar = [
     path: '/home/profile',
   },
 ]
-export default function Layout(Info) {
+export default function Layout() {
   const navigate = useNavigate()
   const location = useLocation()
   const dispatch = useDispatch()

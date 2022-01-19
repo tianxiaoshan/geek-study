@@ -1,7 +1,8 @@
-import { SAVE_USER } from '../action_types/profile'
+import { SAVE_USER, SAVE_PROFILE } from '../action_types/profile'
 
 const initValue = {
   user: {},
+  profile: {},
 }
 
 // 处理个人信息的reducer
@@ -11,6 +12,12 @@ export default function reducer(state = initValue, action) {
     return {
       ...state,
       user: payload,
+    }
+  }
+  if (type === SAVE_PROFILE) {
+    return {
+      ...state,
+      profile: payload,
     }
   }
   return state
